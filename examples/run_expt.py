@@ -89,7 +89,7 @@ def main():
     # Evaluation
     parser.add_argument('--evaluate_all_splits', type=parse_bool, const=True, nargs='?', default=True)
     parser.add_argument('--eval_splits', nargs='+', default=[])
-    parser.add_argument('--eval_only', type=parse_bool, const=True, nargs='?', default=True)
+    parser.add_argument('--eval_only', type=parse_bool, const=True, nargs='?', default=False)
     parser.add_argument('--eval_epoch', default=None, type=int)
 
     # Misc
