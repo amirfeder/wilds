@@ -33,7 +33,7 @@ def main():
     parser.add_argument('--dataset_kwargs', nargs='*', action=ParseKwargs, default={})
     parser.add_argument('--download', default=False, type=parse_bool, const=True, nargs='?',
                         help='If true, tries to downloads the dataset if it does not exist in root_dir.')
-    parser.add_argument('--frac', type=float, default=0.1,
+    parser.add_argument('--frac', type=float, default=1,
                         help='Convenience parameter that scales all dataset splits down to the specified fraction, for development purposes.')
 
     # Loaders
