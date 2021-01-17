@@ -143,6 +143,12 @@ def evaluate(algorithm, datasets, epoch, general_logger, config):
             torch.cat(epoch_y_true),
             torch.cat(epoch_metadata))
 
+        y_preds = torch.cat(epoch_y_pred)
+        y_true = torch.cat(epoch_y_true)
+        print(y_preds)
+        y = {'preds': y_preds, 'true': y_true}
+        torch.save(y, "/home/afeder/datasets/civilcomments/0.1/"+str(split))
+
         results['epoch'] = epoch
         dataset['eval_logger'].log(results)
         general_logger.write(f'Eval split {split} at epoch {epoch}:\n')

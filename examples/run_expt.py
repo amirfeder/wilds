@@ -23,9 +23,9 @@ def main():
     parser = argparse.ArgumentParser()
 
     # Required arguments
-    parser.add_argument('-d', '--dataset', choices=supported.datasets, required=True)
-    parser.add_argument('--algorithm', required=True, choices=supported.algorithms)
-    parser.add_argument('--root_dir', required=True,
+    parser.add_argument('-d', '--dataset', choices=supported.datasets, default="civilcomments")
+    parser.add_argument('--algorithm', default='ERM', choices=supported.algorithms)
+    parser.add_argument('--root_dir', default='data',
                         help='The directory where [dataset]/data can be found (or should be downloaded to, if it does not exist).')
 
     # Dataset
@@ -33,7 +33,7 @@ def main():
     parser.add_argument('--dataset_kwargs', nargs='*', action=ParseKwargs, default={})
     parser.add_argument('--download', default=False, type=parse_bool, const=True, nargs='?',
                         help='If true, tries to downloads the dataset if it does not exist in root_dir.')
-    parser.add_argument('--frac', type=float, default=1.0,
+    parser.add_argument('--frac', type=float, default=0.1,
                         help='Convenience parameter that scales all dataset splits down to the specified fraction, for development purposes.')
 
     # Loaders
@@ -42,7 +42,7 @@ def main():
     parser.add_argument('--uniform_over_groups', type=parse_bool, const=True, nargs='?')
     parser.add_argument('--distinct_groups', type=parse_bool, const=True, nargs='?')
     parser.add_argument('--n_groups_per_batch', type=int)
-    parser.add_argument('--batch_size', type=int)
+    parser.add_argument('--batch_size', default=1, type=int)
     parser.add_argument('--eval_loader', choices=['standard'], default='standard')
 
     # Model
@@ -89,7 +89,7 @@ def main():
     # Evaluation
     parser.add_argument('--evaluate_all_splits', type=parse_bool, const=True, nargs='?', default=True)
     parser.add_argument('--eval_splits', nargs='+', default=[])
-    parser.add_argument('--eval_only', type=parse_bool, const=True, nargs='?', default=False)
+    parser.add_argument('--eval_only', type=parse_bool, const=True, nargs='?', default=True)
     parser.add_argument('--eval_epoch', default=None, type=int)
 
     # Misc
