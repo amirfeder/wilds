@@ -42,7 +42,7 @@ def main():
     parser.add_argument('--uniform_over_groups', type=parse_bool, const=True, nargs='?')
     parser.add_argument('--distinct_groups', type=parse_bool, const=True, nargs='?')
     parser.add_argument('--n_groups_per_batch', type=int)
-    parser.add_argument('--batch_size', default=1, type=int)
+    parser.add_argument('--batch_size', type=int)
     parser.add_argument('--eval_loader', choices=['standard'], default='standard')
 
     # Model
