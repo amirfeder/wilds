@@ -145,8 +145,9 @@ def evaluate(algorithm, datasets, epoch, general_logger, config):
 
         y_preds = torch.cat(epoch_y_pred)
         y_true = torch.cat(epoch_y_true)
+        y_metadata = torch.cat(epoch_metadata)
         print(y_preds)
-        y = {'preds': y_preds, 'true': y_true}
+        y = {'preds': y_preds, 'true': y_true, 'metadata': y_metadata}
         torch.save(y, os.path.join(config.log_dir, f'{split}_predictions'))
 
         results['epoch'] = epoch
